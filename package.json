@@ -1,0 +1,25 @@
+{
+  "name": "hand-of-laplace",
+  "version": "1.0.0",
+  "description": "A card game, inspired \"The Demon's Hand\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niemand1337/Hand-of-Laplace.git"
+  },
+  "keywords": [
+    "game",
+    "card",
+    "browser",
+    "TS"
+  ],
+  "author": "Soeren Jansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niemand1337/Hand-of-Laplace/issues"
+  },
+  "homepage": "https://github.com/Niemand1337/Hand-of-Laplace#readme"
+}
