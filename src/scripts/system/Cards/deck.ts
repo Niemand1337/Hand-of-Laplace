@@ -16,7 +16,7 @@ export class Deck {
      * Removes the given cards from the hand and puts them into the discard_pile
      * @param cards - The Cards that should be played from the hand
      */
-    play_from_hand(cards: Card[]) {
+    play_from_hand(cards: Card[]): void {
         this.discard_pile = [...this.discard_pile, ...cards]; // Combines the played cards with the discard_pile
         cards.forEach(card => {
             this.hand.splice(this.hand.indexOf(card), 1); // Removes card from hand
@@ -27,7 +27,7 @@ export class Deck {
      * Removes x cards from the draw_pile and adds them to the hand 
      * @param x The number of cards that should be drawn from the draw_pile
      */
-    draw_from_draw_pile(x: number) {
+    draw_from_draw_pile(x: number): void {
         for (let i = 0; i < x; i++) {
             if (this.draw_pile.length) { // If draw_pile is not empty
                 this.hand.push(this.draw_pile.pop() as Card); // Removes last card from the draw_pile and pushes it into the hand
@@ -41,7 +41,7 @@ export class Deck {
     /**
      * Mixes all cards from the discard pile into the draw pile and shuffles it
      */
-    discard_into_draw() {
+    discard_into_draw(): void {
         this.draw_pile = shuffleArray([...this.draw_pile, ...this.discard_pile]); // Combines draw and discard pile and shuffles afterwards
         this.discard_pile = []; // All cards from the discard pile are now in the draw pile
     }

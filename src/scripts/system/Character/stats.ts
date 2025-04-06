@@ -13,7 +13,7 @@ export class Stats {
      * Change the handsize by adding x
      * @param x - The value that is added to the handsize
      */
-    change_handsize(x: number) {
+    change_handsize(x: number): void {
         this.handsize += x;
         if (this.handsize < 0) { // No negative length
             this.handsize = 0;
@@ -23,7 +23,7 @@ export class Stats {
     /**
      * Decreases the current_health to the maximal_health, if it is higher
      */
-    health_limit() {
+    health_limit(): void {
         if (this.current_health > this.maximal_health) {
             this.current_health = this.maximal_health;
         }
@@ -33,7 +33,7 @@ export class Stats {
      * Increases the current_health by a set value
      * @param x - The amount of life that should be healed
      */
-    heal_value(x: number) {
+    heal_value(x: number): void {
         this.current_health += x;
         this.health_limit();
     }
@@ -42,7 +42,7 @@ export class Stats {
      * Increases the current_health by a percentage of the maximal_health
      * @param x - The percentage of maximal_health that should be healed
      */
-    heal_percent_maximal(x: number) {
+    heal_percent_maximal(x: number): void {
         this.current_health += Math.floor(this.maximal_health * (x / 100));
         this.health_limit();
     }
@@ -51,7 +51,7 @@ export class Stats {
      * Increases the current_health by a percentage of the current_health
      * @param x - The percentage of current_health that should be healed
      */
-    heal_percent_current(x: number) {
+    heal_percent_current(x: number): void {
         this.current_health += Math.floor(this.current_health * (x / 100));
         this.health_limit();
     }
