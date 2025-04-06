@@ -4,7 +4,7 @@ import { Card } from "./card"
 export class Deck {
     draw_pile: Card[]; // Cards get drawn from here. If empty mix the discard pile into it
     discard_pile: Card[]; // Pile of used cards
-    hand: Card[] // The cards the player can use
+    hand: Card[]; // The cards the player can use
 
     constructor(draw_pile: Card[], discard_pile: Card[] = []) {
         this.draw_pile = shuffleArray(draw_pile); // The start deck of the player
@@ -30,7 +30,7 @@ export class Deck {
     draw_from_draw_pile(x: number) {
         for (let i = 0; i < x; i++) {
             if (this.draw_pile.length) { // If draw_pile is not empty
-                this.hand.push(this.draw_pile.pop() as Card) // Removes last card from the draw_pile and pushes it into the hand
+                this.hand.push(this.draw_pile.pop() as Card); // Removes last card from the draw_pile and pushes it into the hand
                 continue;
             }
             this.discard_into_draw();
