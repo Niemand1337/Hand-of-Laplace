@@ -1,3 +1,4 @@
+import { Card } from "../../Cards/card";
 import { Player } from "../../Character/Player/player";
 import { Enemy } from "../../Enemy/enemy";
 
@@ -14,13 +15,19 @@ export class Battle {
 
     /**
      * Creates the scene for the player
-     * Adds the visuals to the window, so the battle can be fought
      */
     setup(): void {
-        // TODO
+
     }
 
-    update(): void {
-
+    /**
+     * Called when the player wants to play selected cards
+     * Puts the cards from the hand to the discard pile
+     * 
+     * Applie 
+     * @param selected - The selected cards of the player
+     */
+    update(selected: Card[]): void {
+        
     }
 }
