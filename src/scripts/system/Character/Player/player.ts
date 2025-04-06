@@ -1,6 +1,6 @@
-import { Deck } from "./Cards/deck"
-import { Skilltree } from "./Character/skilltree"
-import { Stats } from "./Character/stats"
+import { Deck } from "../../Cards/deck"
+import { Skilltree } from "../Skill/skilltree"
+import { Stats } from "./stats"
 
 export interface Player {
     type: String; // The name of the class the player uses

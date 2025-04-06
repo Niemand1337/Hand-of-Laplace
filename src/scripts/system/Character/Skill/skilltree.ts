@@ -1,6 +1,6 @@
-import { LevelNode } from "./levelNode";
-import { LevelSystem } from "./levelSystem";
-import { Skill } from "./skills";
+import { LevelNode } from "../Level/levelNode";
+import { LevelSystem } from "../Level/levelSystem";
+import { Skill } from "../Skill/skills";
 
 export interface Skilltree {
     level_system: LevelSystem; // The management of the player level

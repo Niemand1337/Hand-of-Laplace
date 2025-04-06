@@ -8,4 +8,6 @@ export interface Enemy {
     current_speed: number // Counts down, attacks on 0 and resets to maximal_speed
     maximal_speed: number // Start value of current_speed
     abilitys: Ability[]; // Abilities the enemy has (example, half damage each second attack)
+    gold: number; // How much gold the player recieves for the victory
+    xp: number; // How much xp the player recieves for the victory
 }

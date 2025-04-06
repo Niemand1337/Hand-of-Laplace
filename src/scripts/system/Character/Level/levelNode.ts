@@ -1,4 +1,4 @@
-import { Skill } from "./skills";
+import { Skill } from "../Skill/skills";
 
 export class LevelNode {
     skill: Skill; // The skill the node adds to the player
