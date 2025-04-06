@@ -1,12 +1,24 @@
 export class Stats {
-    handsize: number; // How many cards the player can have on his hand
+    handsize: number; // How many cards can be on the hand
     current_health: number; // If 0 the player loses
     maximal_health: number; // current_health can't go higher than this
+    current_removes: number; // How many cards can be removed from the hand
+    maximal_removes: number; // Starting amount of current_removes
+    crit_damage: number; // Multiplier of crit, default 1.25
+    crit_chance: number; // How likly a drawn card is a crit, default 5%
+    gold: number; // The current gold of the player
+    shop_visits: number; // How ofter the player can use the same shop, default 1
 
-    constructor(handsize: number, current_health: number, maximal_health: number = current_health) {
+    constructor(handsize: number, current_health: number, maximal_health: number = current_health, current_removes: number, maximal_removes: number, crit_damage: number = 1.25, crit_chance: number = 5, gold: number = 0, shop_visits: number = 1) {
         this.handsize = handsize;
         this.current_health = current_health;
         this.maximal_health = maximal_health;
+        this.current_removes = current_removes;
+        this.maximal_removes = maximal_removes;
+        this.crit_damage = crit_damage;
+        this.crit_chance = crit_chance;
+        this.gold = gold;
+        this.shop_visits = shop_visits;
     }
 
     /**
@@ -55,4 +67,6 @@ export class Stats {
         this.current_health += Math.floor(this.current_health * (x / 100));
         this.health_limit();
     }
+
+
 }
