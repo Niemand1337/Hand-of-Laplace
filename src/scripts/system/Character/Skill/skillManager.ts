@@ -13,7 +13,7 @@ export class SkillManager {
      * Example: Health II would be removed if the new skill is Health III
      * @param skill - The new skill
      */
-    addSkill(skill: Skill) {
+    add_skill(skill: Skill) {
 
     }
 }

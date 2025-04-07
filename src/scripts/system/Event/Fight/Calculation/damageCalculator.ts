@@ -1,9 +1,20 @@
 import { Card } from "../../../Cards/card";
 import { SkillManager } from "../../../Character/Skill/skillManager";
 import { Ability } from "../../../Enemy/ability";
-import { Combination } from "./combination";
+import { Combination } from "../../../Combinations/combination";
+import Combinator from "../../../Combinations/combinator";
 
+
+/**
+ * Calculatest the damage of cards based on the combination and skills of the player and the enemy
+ */
 export class DamageCalculator {
+    combinator: Combinator;
+
+    constructor() {
+        this.combinator = new Combinator();
+    }
+
     /**
      * Calculates the damage the enemy will take
      * - Finds the damaging cards (removes the others, as they don't count)
@@ -15,7 +26,7 @@ export class DamageCalculator {
      * @param enemy_skills 
      */
     calculation(cards: Card[], player_skills: SkillManager, enemy_skills: Ability[]): number {
-        let combination: Combination = this.findCombination(cards);
+        let combination: Combination = this.combinator.find_combination(cards);
 
         let damage = combination.damage;
         combination.cards.forEach(card => {damage += card.value})
@@ -23,14 +34,5 @@ export class DamageCalculator {
         // TODO
 
         return damage;
-    }
-
-    /**
-     * Finds the biggest combination in the cards
-     * @param cards - The cards to search the combination in
-     * @returns string - The name of the combination and its cards
-     */
-    findCombination(cards: Card[]): Combination {
-        // TODO
     }
 }

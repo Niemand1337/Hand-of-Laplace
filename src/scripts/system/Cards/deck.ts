@@ -1,4 +1,4 @@
-import { shuffleArray } from "../../utility";
+import { shuffle_array } from "../../utility";
 import { Card } from "./card"
 
 export class Deck {
@@ -7,8 +7,8 @@ export class Deck {
     hand: Card[]; // The cards the player can use
 
     constructor(draw_pile: Card[], discard_pile: Card[] = []) {
-        this.draw_pile = shuffleArray(draw_pile); // The start deck of the player
-        this.discard_pile = shuffleArray(discard_pile); // Default is a empty discard pile, but may be changed by effects
+        this.draw_pile = shuffle_array(draw_pile); // The start deck of the player
+        this.discard_pile = shuffle_array(discard_pile); // Default is a empty discard pile, but may be changed by effects
         this.hand = []; // Hand is always empty at the begin
     }
 
@@ -42,7 +42,7 @@ export class Deck {
      * Mixes all cards from the discard pile into the draw pile and shuffles it
      */
     discard_into_draw(): void {
-        this.draw_pile = shuffleArray([...this.draw_pile, ...this.discard_pile]); // Combines draw and discard pile and shuffles afterwards
+        this.draw_pile = shuffle_array([...this.draw_pile, ...this.discard_pile]); // Combines draw and discard pile and shuffles afterwards
         this.discard_pile = []; // All cards from the discard pile are now in the draw pile
     }
 }
