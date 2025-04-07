@@ -1,7 +1,11 @@
-export interface Card{
-    value: number; // The numeric value of the card: 2, 3, 4, 5, 6, 7, 8, 9, 10 (Image card) or 11 (Joker, can be used as 1)
-    type: number;  // 0 (Number), 1 (Jack), 2 (Queen), 3 (King), 4 (Joker)
-    suits: number; // 0 (Spades), 1 (Hearths), 2 (Diamonds) or 3 (Clubs)
-    color: number; // 0 (Red) or 1 (Black) (Not boolean to possibly add more colors)
+export class Card{
+    value: number; // The value of the card: 2 to 14, 1 to 10 number cards and image cards Jack (11), Queen (12), King (13) worth 10 and the Joker (14) worth 1 or 11 
+    suit: number; //  0 (Hearths), 1 (Diamonds), 2 (Spades), or 3 (Clubs), 0 and 1 are red and 2 and 3 are black
     path: string;  // Path the the img of the card in the templates/images/cards folder
+    
+    constructor(value: number, type: number, suit: number, color: number, path: string) {
+        this.value = value;
+        this.suit = suit;
+        this.path = path;
+    }
 }
