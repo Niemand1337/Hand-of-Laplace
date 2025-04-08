@@ -37,6 +37,22 @@ export default class CardListManager {
     }
 
     /**
+     * Returns all cards of the list with the value
+     * @param cards - The cards to be filtered
+     * @param suit - The allowed value
+     * @returns - Only the cards with the value
+     */
+    filter_by_value(cards: Card[], value: number): Card[] {
+        let filtered: Card[] = [];
+        cards.forEach(v => {
+            if (v.value === value) {
+                filtered.push(v);
+            }
+        });
+        return filtered;
+    }
+
+    /**
      * Returns all cards of the list with the suit
      * @param cards - The cards to be filtered
      * @param suit - The allowed suit
@@ -50,5 +66,48 @@ export default class CardListManager {
             }
         });
         return filtered;
+    }
+
+    /**
+     * Returns if all cards have the same suit
+     * @param cards - The Card[] to control
+     * @returns - Boolean, if all cards have the same suit
+     */
+    all_same_suit(cards: Card[]): boolean {
+        if (cards.length < 2) {
+            return true;
+        }
+        return cards.length === this.filter_by_suit(cards, cards[0].suit).length;
+    }
+
+    /**
+     * Returns the length of the longest sequenz in the cards
+     * @param cards - The cards the sequenz should be searched in
+     * @param ordered - If the cards are already ordered by value
+     * @returns - Length of longest sequenz
+     */
+    longest_sequenz(cards: Card[], ordered: boolean = true): number {
+        if (cards.length == 0) { // No sequent possible
+            return 0;
+        }
+        if (!ordered) { // Don't need to order again
+            cards = this.sort_by_values(cards);
+        }
+
+        let length: number = 1;
+        let current_length: number = 1;
+        let current_value: number = cards[0].value
+        cards.splice(1).forEach(card => {
+            if (card.value === current_value + 1) { // In sequenz
+                current_length++;
+                if (current_length > length) {
+                    length = current_length;
+                }
+            } else { // Sequenz restart
+                current_length = 1;
+            }
+            current_value = card.value;
+        });
+        return length;
     }
 }
