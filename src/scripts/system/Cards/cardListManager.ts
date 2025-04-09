@@ -87,7 +87,7 @@ export default class CardListManager {
      * @returns - Length of longest sequenz
      */
     longest_sequenz(cards: Card[], ordered: boolean = true): number {
-        if (cards.length == 0) { // No sequent possible
+        if (cards.length === 0) { // No sequent possible
             return 0;
         }
         if (!ordered) { // Don't need to order again
