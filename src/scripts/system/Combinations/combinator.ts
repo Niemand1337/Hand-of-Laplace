@@ -41,18 +41,81 @@ export default class Combinator {
     find_combination(cards: Card[]): Combination {
         cards = this.cardListManager.sort_by_values(cards);
 
-        let comb: Combination | null = this.kingdom(cards);
-        if (comb !== null) {
-            return comb;
-        }
+        let combs: ((card: Card[]) => null | Combination)[] = [this.kingdom, this.army, this.soldiers];
 
-        return new Combination(cards, 0, "Void");
+        for (const comb of combs) { // Tries combinations in order untill the first not null one is found
+            const result = comb(cards);
+            if (result !== null) {
+                return result;
+            }
+        }
+        return new Combination(cards, 0, "Void"); // Error, should only be possible on cards === []
     }
 
+    /**
+     * Returns null or the kingdom combination of the cards
+     * Cards need to be sorted by value
+     * @param cards
+     * @returns - null or combination
+     */
     kingdom(cards: Card[]): Combination | null {
-        if (this.cardListManager.all_same_suit(cards) && this.cardListManager.longest_sequenz(cards) === 5) {
-            return new Combination(cards, 1500, "Kingdom");
+        if (cards[0].value !== 10) { // Start sequenze at value 10
+            return null;
         }
-        return null;        
+        if (this.army(cards) === null) { // Must be army
+            return null;
+        }
+        return new Combination(cards, 1500, "Kingdom")
+    }
+
+    /**
+     * Returns null or the army combination of the cards
+     * Cards need to be sorted by value
+     * @param cards
+     * @returns - null or combination
+     */
+    army(cards: Card[]): Combination | null {
+        if (this.league(cards) === null) { // Same suit and 5 cards
+            return null;
+        }
+        if (this.cardListManager.longest_sequenz(cards).length !== 5) { // 5er Sequenz
+            return null;
+        }
+        return new Combination(cards, 500, "Army");
+    }
+
+    /**
+     * Returns null or the soldiers combination of the cards
+     * Cards need to be sorted by value
+     * @param cards
+     * @returns - null or combination
+     */
+    soldiers(cards: Card[]): Combination | null {
+        if (cards.length !== 5) {
+            return null;
+        }
+        if (!(this.cardListManager.all_same_value([cards[0], cards[1]]) && this.cardListManager.all_same_value([cards[3], cards[4]]))) { // Two duos
+            return null;
+        }
+        if (!this.cardListManager.all_same_value([cards[1], cards[2]]) && !this.cardListManager.all_same_value([cards[2], cards[3]])) { // One duo is a tripple
+            return null;
+        }
+        return new Combination(cards, 150, "Soldiers")
+    }
+
+    /**
+     * Returns null or the league combination of the cards
+     * Cards need to be sorted by value
+     * @param cards
+     * @returns - null or combination
+     */
+    league(cards: Card[]): Combination | null {
+        if (cards.length !== 5) { // 5 cards
+            return null;
+        }
+        if (!this.cardListManager.all_same_suit(cards)) { // Same suit
+            return null;
+        }
+        return new Combination(cards, 124, "League");
     }
 }

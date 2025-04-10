@@ -69,6 +69,18 @@ export default class CardListManager {
     }
 
     /**
+     * Returns if all cards have the same value
+     * @param cards - The Card[] to control
+     * @returns - Boolean, if all cards have the same value
+     */
+    all_same_value(cards: Card[]): boolean {
+        if (cards.length < 2) {
+            return true;
+        }
+        return cards.length === this.filter_by_value(cards, cards[0].value).length;
+    }
+
+    /**
      * Returns if all cards have the same suit
      * @param cards - The Card[] to control
      * @returns - Boolean, if all cards have the same suit
@@ -81,33 +93,37 @@ export default class CardListManager {
     }
 
     /**
-     * Returns the length of the longest sequenz in the cards
+     * Returns the longest sequenz of cards, which value increases by one
      * @param cards - The cards the sequenz should be searched in
      * @param ordered - If the cards are already ordered by value
-     * @returns - Length of longest sequenz
+     * @returns - Longest sequenz
      */
-    longest_sequenz(cards: Card[], ordered: boolean = true): number {
-        if (cards.length === 0) { // No sequent possible
-            return 0;
+    longest_sequenz(cards: Card[], ordered: boolean = true): Card[] {
+        if (cards.length === 0) { // No sequenz possible
+            return [];
         }
         if (!ordered) { // Don't need to order again
             cards = this.sort_by_values(cards);
         }
 
-        let length: number = 1;
-        let current_length: number = 1;
+        let sequenz: Card[] = [cards[0]];
+        let current_sequenz: Card[] = [cards[0]]
         let current_value: number = cards[0].value
         cards.splice(1).forEach(card => {
-            if (card.value === current_value + 1) { // In sequenz
-                current_length++;
-                if (current_length > length) {
-                    length = current_length;
-                }
-            } else { // Sequenz restart
-                current_length = 1;
+            if (card.value === current_value) { // Card doubled
+                return;
             }
+            if (card.value === current_value + 1) { // In sequenz
+                current_sequenz.push(card);
+                if (current_sequenz.length > sequenz.length) {
+                    sequenz = current_sequenz;
+                }
+                current_value = card.value;
+                return;
+            }
+            current_sequenz = [card]; // Start new sequenz
             current_value = card.value;
         });
-        return length;
+        return sequenz;
     }
 }
