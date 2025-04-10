@@ -109,6 +109,12 @@ export default class CardListManager {
         let sequenz: Card[] = [cards[0]];
         let current_sequenz: Card[] = [cards[0]]
         let current_value: number = cards[0].value
+
+        let last = cards[cards.length - 1];
+        if (last.value == 14 && current_value == 2) { // Joker can count as 1
+            current_sequenz.push(last);
+        }
+
         cards.splice(1).forEach(card => {
             if (card.value === current_value) { // Card doubled
                 return;
