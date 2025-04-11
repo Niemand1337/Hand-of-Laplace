@@ -1,6 +1,5 @@
 import { Card } from "../../../Cards/card";
 import { SkillManager } from "../../../Character/Skill/skillManager";
-import { Ability } from "../../../Enemy/ability";
 import { Combination } from "../../../Combinations/combination";
 import Combinator from "../../../Combinations/combinator";
 
@@ -10,9 +9,13 @@ import Combinator from "../../../Combinations/combinator";
  */
 export class DamageCalculator {
     combinator: Combinator;
+    playerSkillManager: SkillManager;
+    enemySkillManager: SkillManager;
 
-    constructor() {
+    constructor(playerSkillManager: SkillManager, enemySkillManager: SkillManager) {
         this.combinator = new Combinator();
+        this.playerSkillManager = playerSkillManager;
+        this.enemySkillManager = enemySkillManager;
     }
 
     /**
@@ -25,14 +28,14 @@ export class DamageCalculator {
      * @param player_skills - The SkillManager, that applies the skills of the player to the cards
      * @param enemy_skills 
      */
-    calculation(cards: Card[], player_skills: SkillManager, enemy_skills: Ability[]): number {
+    calculation(cards: Card[]): Combination {
+        // Base damage of the combination + card damage
         let combination: Combination = this.combinator.find_combination(cards);
+        combination.cards.forEach(card => {combination.damage += card.value})
 
-        let damage = combination.damage;
-        combination.cards.forEach(card => {damage += card.value})
-
-        // TODO
-
-        return damage;
+        // Apply player and enemy skills to the combination
+        combination = this.playerSkillManager.apply_all_skills(combination);
+        combination = this.enemySkillManager.apply_all_skills(combination);
+        return combination;
     }
 }

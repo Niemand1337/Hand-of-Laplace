@@ -1,6 +1,6 @@
 import { Card } from "../../Cards/card";
 import { Player } from "../../Character/Player/player";
-import { Enemy } from "../../Enemy/enemy";
+import { Enemy } from "../../Character/Enemy/enemy";
 
 export class Battle {
     player: Player;

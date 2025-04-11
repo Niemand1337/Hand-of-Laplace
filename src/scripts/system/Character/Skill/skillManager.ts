@@ -1,3 +1,4 @@
+import { Combination } from "../../Combinations/combination";
 import { Skill } from "./skills";
 
 export class SkillManager {
@@ -15,5 +16,9 @@ export class SkillManager {
      */
     add_skill(skill: Skill) {
 
+    }
+
+    apply_all_skills(combination: Combination): Combination {
+        return combination;
     }
 }
