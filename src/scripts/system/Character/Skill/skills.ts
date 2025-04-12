@@ -12,4 +12,17 @@ export abstract class Skill {
      * Every skill will be called by this function
      */
     abstract activate(): void
+
+    /**
+     * Adds the skill to the Skill[]
+     * Don't use push instead
+     * @param skills - The current skills
+     * @returns - Skill[] the new skills
+     */
+    abstract add(skills: Skill[]): Skill[]
+
+    /**
+     * Call if the skill will be deleted from the list
+     */
+    abstract remove(): void
 }
