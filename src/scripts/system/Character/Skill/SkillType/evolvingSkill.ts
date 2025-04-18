@@ -7,8 +7,8 @@ export default abstract class EvolvingSkill extends Skill {
     replaces: String[]; // The skills needed to evolve
     evolution: Skill; // Become this skill if added, when all replaces are there
 
-    constructor(skillType: number, name: String, replaces: String[], evolution: Skill) {
-        super(skillType, name);
+    constructor(skillType: number, name: String, value: number, replaces: String[], evolution: Skill) {
+        super(skillType, name, value);
         this.replaces = replaces;
         this.evolution = evolution;
     }
