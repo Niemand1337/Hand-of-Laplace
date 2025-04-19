@@ -30,12 +30,21 @@ export class SkillManager {
             case 2: // Attack
                 skill.add(this.attack_skills);
                 break;
-            case 3: // Stat
+            case 3: // Stat, old changes will be reverted and new applied
                 skill.add(this.stat_skills);
+                skill.activate(); // Apply new changes
         }
     }
 
-    apply_all_skills(combination: Combination): Combination {
+    apply_defense_skills(combination: Combination): Combination {
+        return combination;
+    }
+
+    apply_utility_skills(combination: Combination): Combination {
+        return combination;
+    }
+
+    apply_attack_skills(combination: Combination): Combination {
         return combination;
     }
 }

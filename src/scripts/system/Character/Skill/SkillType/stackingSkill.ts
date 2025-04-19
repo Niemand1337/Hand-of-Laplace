@@ -11,6 +11,7 @@ export default abstract class StackingSkill extends Skill {
     add(skills: Skill[]): void {
         for (let skill of skills) {
             if (skill.name === this.name) { // Skill already exist, add the value to it
+                skill.revert(); // Revert the changes of the old skill before changing it
                 skill.value += this.value;
                 return;
             }

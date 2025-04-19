@@ -13,6 +13,7 @@ export default abstract class ScalingSkill extends Skill {
     add(skills: Skill[]): void {
         for (let skill of skills) {
             if (skill.name === this.name) { // Skill already exist, increase the level of it
+                skill.revert(); // Revert the changes of the old skill before changing it
                 (skill as ScalingSkill).level++;
                 return;
             }

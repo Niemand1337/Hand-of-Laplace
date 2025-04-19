@@ -25,9 +25,16 @@ export abstract class Skill {
 
     /**
      * Call if the skill will be deleted from the list
-     * Some of the inhereting classes will overwrite this
+     * Not only removes the skill from the list inplace, but also reverts the changes of it
      */
     remove(skills: Skill[]): void {
+        this.revert();
         skills.splice(skills.findIndex(skill => { skill.name === this.name;}));
     }
+
+    /**
+     * Reverts the changes of the skill
+     * Mostly used for stat changes, as others can just be removed
+     */
+    abstract revert(): void
 }
