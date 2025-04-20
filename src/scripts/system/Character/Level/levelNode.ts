@@ -2,14 +2,18 @@ import { Skill } from "../Skill/skills";
 
 export class LevelNode {
     skill: Skill; // The skill the node adds to the player
-    acquired: boolean // The skill node is activated
+    acquired: boolean; // The skill node is activated
+    blocked: boolean; // If the skill is blocked it can't be taken
+    blocks: LevelNode[]; // The skills that are blocked if this one is taken
     left: LevelNode | null; // Child
     mid: LevelNode | null; // Child
     right: LevelNode | null; // Child
 
-    constructor(skill: Skill, left: LevelNode | null = null, mid: LevelNode | null = null, right: LevelNode | null = null) {
+    constructor(skill: Skill, blocks: LevelNode[] = [], left: LevelNode | null = null, mid: LevelNode | null = null, right: LevelNode | null = null) {
         this.skill = skill;
         this.acquired = false;
+        this.blocked = false;
+        this.blocks = blocks;
         this.left = left;
         this.mid = mid;
         this.right = right;
