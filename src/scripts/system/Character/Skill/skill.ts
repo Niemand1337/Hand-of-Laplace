@@ -1,12 +1,14 @@
-export abstract class Skill {
+import { SkillType } from "./enums";
+
+export default abstract class Skill {
     abstract skillClass: number; // Each implementing class has its unique number
-    skillType: number;
+    skillType: SkillType;
     name: String;
     value: number; // The value associated with the skill, can be 0 in some cases
 
-    constructor(skillType: number, name: String, value: number) {
+    constructor(skillType: SkillType, value: number) {
         this.skillType = skillType;
-        this.name = name;
+        this.name = this.constructor.name;
         this.value = value;
     }
 
@@ -29,7 +31,7 @@ export abstract class Skill {
      */
     remove(skills: Skill[]): void {
         this.revert();
-        skills.splice(skills.findIndex(skill => { skill.name === this.name;}));
+        skills.splice(skills.findIndex(skill => { skill.name === this.name;}), 1);
     }
 
     /**

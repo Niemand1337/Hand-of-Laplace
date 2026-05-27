@@ -1,4 +1,4 @@
-import { Skill } from "../skills";
+import Skill from "../skill";
 
 /**
  * Skills that evolve. Can completly change and become a new skill, if certain skills already exist
@@ -8,15 +8,19 @@ import { Skill } from "../skills";
 export default abstract class EvolvingSkill extends Skill {
     skillClass: number = 3; // EvolutionSkills are class 3
     replaces: String[]; // The skills needed to evolve
-    evolution: Skill; // Become this skill if added, when all replaces are there
+    evolution: Skill | null; // Become this skill if added, when all replaces are there. Dont change if null (final evolution)
 
-    constructor(skillType: number, name: String, value: number, replaces: String[], evolution: Skill) {
-        super(skillType, name, value);
+    constructor(skillType: number, value: number, replaces: String[], evolution: Skill | null) {
+        super(skillType, value);
         this.replaces = replaces;
         this.evolution = evolution;
     }
 
     add(skills: Skill[]): void {
+        if (!this.evolution){
+            return;
+        }
+
         if (this.evolution_criteria(skills)) {
             this.replaces.forEach(skill_name => { // Removes the skills used for the evolution from the given Skill[]
                 skills.forEach(skill => {

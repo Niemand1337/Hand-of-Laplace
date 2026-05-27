@@ -1,0 +1,13 @@
+--- Clean ---
+
+- Usage of enums for skillTypes and skillClass instead of numbers in the Skill ordner
+
+
+
+--- Broken? ---
+
+- EvolvingSkill
+-- Currently every Skill saves the one it is evolving, but only checkt on adding a new one and combined with removing it.
+-- This is a bad system, instead there should be just a check if it evolves and then it should update the old instance with the new one
+-- The check should be done after adding something and after evolving something for the whole skill list
+-- Needs to distingish between ones that are neccesarry and once that are neccesarry and need to be removed

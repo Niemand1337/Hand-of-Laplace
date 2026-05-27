@@ -1,11 +1,11 @@
-import { Skill } from "../skills";
+import Skill from "../skill";
 
 // Skills that stack, taking them multiple times adds the value of the effect to the others
 export default abstract class StackingSkill extends Skill {
     skillClass: number = 1; // StackingSkills are class 2
 
-    constructor(skillType: number, name: String, value: number) {
-        super(skillType, name, value);
+    constructor(skillType: number, value: number) {
+        super(skillType, value);
     }
 
     add(skills: Skill[]): void {

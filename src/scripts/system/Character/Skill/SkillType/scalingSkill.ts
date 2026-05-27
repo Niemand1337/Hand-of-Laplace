@@ -1,12 +1,12 @@
-import { Skill } from "../skills";
+import Skill from "../skill";
 
 // Skills that scale, choosing it multiple times increases the level of it
 export default abstract class ScalingSkill extends Skill {
     skillClass: number = 2; // ScalingSkills are class 2
     level: number;
 
-    constructor(skillType: number, name: String, value: number, level: number = 1) {
-        super(skillType, name, value);
+    constructor(skillType: number, value: number, level: number = 1) {
+        super(skillType, value);
         this.level = level;
     }
 

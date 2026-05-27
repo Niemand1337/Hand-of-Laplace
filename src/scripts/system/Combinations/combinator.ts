@@ -31,9 +31,11 @@ import { Combination } from "./combination";
  */
 export default class Combinator {
     cardListManager: CardListManager;
+    combinations: ((card: Card[]) => null | Combination)[];
 
     constructor() {
         this.cardListManager = new CardListManager();
+        this.combinations = [this.quintet, this.kingdom, this.army, this.quartet, this.soldiers, this.league, this.ruler, this.tripple, this.couple, this.duo, this.fool, this.hero, this.single];
     }
 
     /**
@@ -44,10 +46,7 @@ export default class Combinator {
     find_combination(cards: Card[]): Combination {
         cards = this.cardListManager.sort_by_values(cards);
 
-        // Must in priority order
-        let combinations: ((card: Card[]) => null | Combination)[] = [this.quintet, this.kingdom, this.army, this.quartet, this.soldiers, this.league, this.ruler, this.tripple, this.couple, this.duo, this.fool, this.hero, this.single];
-
-        for (const comb of combinations) { // Tries combinations in order untill the first not null one is found
+        for (const comb of this.combinations) { // Tries combinations
             const result = comb(cards);
             if (result !== null) {
                 return result;

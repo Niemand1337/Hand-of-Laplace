@@ -36,6 +36,7 @@ export class DamageCalculator {
         // Apply player and enemy skills to the combination
         combination = this.playerSkillManager.apply_all_skills(combination);
         combination = this.enemySkillManager.apply_all_skills(combination);
+        
         return combination;
     }
 }

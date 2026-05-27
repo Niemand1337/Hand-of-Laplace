@@ -1,11 +1,12 @@
 import { Combination } from "../../Combinations/combination";
-import { Skill } from "./skills";
+import Skill from "./skill";
+import { SkillType } from "./enums";
 
 export class SkillManager {
-    defense_skills: Skill[]; // 0 - Skills that activate while taking damage
-    utility_skills: Skill[]; // 1 - Skills that activate after the battle
-    attack_skills: Skill[]; // 2 - Skills that activate while attacking
-    stat_skills: Skill[]; // 3 - Skills that change the stats
+    defense_skills: Skill[]; 
+    utility_skills: Skill[];
+    attack_skills: Skill[];
+    stat_skills: Skill[];
 
     constructor() {
         this.defense_skills = [];
@@ -21,16 +22,16 @@ export class SkillManager {
      */
     add_skill(skill: Skill): void {
         switch(skill.skillType) {
-            case 0: // Defense
+            case SkillType.defense:
                 skill.add(this.defense_skills);
                 break;
-            case 1: // Utility
+            case SkillType.utility:
                 skill.add(this.utility_skills);
                 break;
-            case 2: // Attack
+            case SkillType.attack:
                 skill.add(this.attack_skills);
                 break;
-            case 3: // Stat, old changes will be reverted and new applied
+            case SkillType.stat: // Stat, old changes will be reverted and new applied
                 skill.add(this.stat_skills);
                 skill.activate(); // Apply new changes
         }
@@ -45,6 +46,13 @@ export class SkillManager {
     }
 
     apply_attack_skills(combination: Combination): Combination {
+        return combination;
+    }
+
+    apply_all_skills(combination: Combination): Combination {
+        combination = this.apply_defense_skills(combination);
+        combination = this.apply_utility_skills(combination);
+        combination = this.apply_attack_skills(combination);
         return combination;
     }
 }
