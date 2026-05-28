@@ -1,4 +1,4 @@
-import { Encounter } from "./Encounter/encounter";
+import { Encounter } from "./encounter";
 import { Battle } from "./Fight/battle";
 
 /**
