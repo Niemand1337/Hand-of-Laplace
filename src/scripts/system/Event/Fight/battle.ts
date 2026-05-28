@@ -1,8 +1,9 @@
 import { Card } from "../../Cards/card";
 import { Player } from "../../Character/Player/player";
 import { Enemy } from "../../Character/Enemy/enemy";
+import { Encounter } from "../encounter";
 
-export class Battle {
+export class Battle implements Encounter {
     player: Player;
     enemy: Enemy;
     end: boolean; // True if either the player or enemy is dead
@@ -14,9 +15,23 @@ export class Battle {
     }
 
     /**
-     * Creates the scene for the player
+     * Initialize the encounter and starts the loop
      */
-    setup(): void {
+    load(): void {
+
+    }
+
+    /** ??
+     * Ends the encounter and applies the consequences
+     */
+    resolve(): void {
+
+    }
+
+    /**
+     * Creates the scene (visual) for the player
+     */
+    visualize(): void {
 
     }
 
