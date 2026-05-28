@@ -1,6 +1,7 @@
 --- Clean ---
 
 - Usage of enums for skillTypes and skillClass instead of numbers in the Skill ordner
+- Utilize either default export or not but not both
 
 
 
