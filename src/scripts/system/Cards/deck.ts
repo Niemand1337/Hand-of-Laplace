@@ -52,9 +52,9 @@ export class Deck {
      */
     private createDefaultDeck(): Card[] {
         return [
-            new Card(1, 1, "Hearth1"),
-            new Card(2, 1, "Hearth2"),
-            new Card(3, 1, "Hearth3"),
+            new Card(1, 1, "hearth1"),
+            new Card(2, 1, "hearth2"),
+            new Card(3, 1, "hearth3"),
         ];
     }
 }

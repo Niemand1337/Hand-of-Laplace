@@ -1,6 +1,6 @@
-import MapTest1 from "./scripts/structures/Maps/map_test1";
-import { Deck } from "./scripts/system/Cards/deck";
-import { Player } from "./scripts/system/Character/Player/player";
+import MapTest1 from "./Scripts/Structures/Maps/map_test1";
+import { Deck } from "./Scripts/System/Cards/deck";
+import { Player } from "./Scripts/System/Character/Player/player";
 
 console.log("Start Program...");
 

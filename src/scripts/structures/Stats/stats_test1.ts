@@ -1,4 +1,4 @@
-import { Stats } from "../../system/Character/Player/stats";
+import { Stats } from "../../System/Character/Player/stats";
 
 export default class Tester1Stats extends Stats {
     constructor() {

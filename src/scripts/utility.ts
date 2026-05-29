@@ -1,4 +1,4 @@
-import { Card } from "./system/Cards/card";
+import { Card } from "./System/Cards/card";
 
 /**
  * Shuffels the given array around and returns it

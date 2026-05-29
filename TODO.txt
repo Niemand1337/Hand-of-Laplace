@@ -3,7 +3,6 @@
 - Usage of enums for skillTypes and skillClass instead of numbers in the Skill ordner
 - Utilize either default export or not but not both
 - Usage of private and public for functions
-- Either folder names starting Caps or not but not both
 
 
 

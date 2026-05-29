@@ -1,5 +1,5 @@
-import Tester1Skilltree from "../../../structures/Skilltrees/skill_test1";
-import Tester1Stats from "../../../structures/Stats/stats_test1";
+import Tester1Skilltree from "../../../Structures/Skilltrees/skill_test1";
+import Tester1Stats from "../../../Structures/Stats/stats_test1";
 import { Card } from "../../Cards/card";
 import { Deck } from "../../Cards/deck"
 import Skilltree from "../Skill/skilltree"

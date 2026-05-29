@@ -1,6 +1,6 @@
-import { LevelNode } from "../../system/Character/Level/levelNode";
-import { AdeptBrawler, ApprenticeBrawler, MasterBrawler, NoviceBrawler } from "../../system/Character/Skill/Skills/Brawler";
-import Skilltree from "../../system/Character/Skill/skilltree";
+import { LevelNode } from "../../System/Character/Level/levelNode";
+import { AdeptBrawler, ApprenticeBrawler, MasterBrawler, NoviceBrawler } from "../../System/Character/Skill/Skills/Brawler";
+import Skilltree from "../../System/Character/Skill/skilltree";
 
 
 export default class Tester1Skilltree extends Skilltree {
