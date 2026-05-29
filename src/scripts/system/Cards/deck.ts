@@ -6,7 +6,7 @@ export class Deck {
     discard_pile: Card[]; // Pile of used cards
     hand: Card[]; // The cards the player can use
 
-    constructor(draw_pile: Card[], discard_pile: Card[] = []) {
+    constructor(draw_pile: Card[] = this.createDefaultDeck(), discard_pile: Card[] = []) {
         this.draw_pile = shuffle_array(draw_pile); // The start deck of the player
         this.discard_pile = shuffle_array(discard_pile); // Default is a empty discard pile, but may be changed by effects
         this.hand = []; // Hand is always empty at the begin
@@ -44,5 +44,17 @@ export class Deck {
     discard_into_draw(): void {
         this.draw_pile = shuffle_array([...this.draw_pile, ...this.discard_pile]); // Combines draw and discard pile and shuffles afterwards
         this.discard_pile = []; // All cards from the discard pile are now in the draw pile
+    }
+
+    /**
+     * Creates a default deck
+     * TODO: Create normal deck
+     */
+    private createDefaultDeck(): Card[] {
+        return [
+            new Card(1, 1, "Hearth1"),
+            new Card(2, 1, "Hearth2"),
+            new Card(3, 1, "Hearth3"),
+        ];
     }
 }
