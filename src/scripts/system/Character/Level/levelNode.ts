@@ -1,4 +1,14 @@
-import { Skill } from "../Skill/skill";
+import Skill from "../Skill/skill";
+
+interface LevelNodeOptions {
+    skill: Skill;
+    acquired?: boolean;
+    blocked?: boolean;
+    blocks?: LevelNode[];
+    left?: LevelNode | null;
+    mid?: LevelNode | null;
+    right?: LevelNode | null;
+}
 
 export class LevelNode {
     skill: Skill; // The skill the node adds to the player
@@ -9,10 +19,18 @@ export class LevelNode {
     mid: LevelNode | null; // Child
     right: LevelNode | null; // Child
 
-    constructor(skill: Skill, blocks: LevelNode[] = [], left: LevelNode | null = null, mid: LevelNode | null = null, right: LevelNode | null = null) {
+    constructor({
+        skill,
+        acquired = false,
+        blocked = false,
+        blocks = [],
+        left = null,
+        mid = null,
+        right = null
+    }: LevelNodeOptions){
         this.skill = skill;
-        this.acquired = false;
-        this.blocked = false;
+        this.acquired = acquired;
+        this.blocked = blocked;
         this.blocks = blocks;
         this.left = left;
         this.mid = mid;
