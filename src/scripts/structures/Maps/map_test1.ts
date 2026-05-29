@@ -1,9 +1,9 @@
-import { Enemy } from "../system/Character/Enemy/enemy";
-import Goblin from "../system/Character/Enemy/Mob/goblin";
-import { Player } from "../system/Character/Player/player";
-import { EventNode } from "../system/Event/eventNode";
-import { Battle } from "../system/Event/Fight/battle";
-import Map from "../system/Event/map";
+import { Enemy } from "../../system/Character/Enemy/enemy";
+import Goblin from "../../system/Character/Enemy/Mob/goblin";
+import { Player } from "../../system/Character/Player/player";
+import { EventNode } from "../../system/Event/eventNode";
+import { Battle } from "../../system/Event/Fight/battle";
+import Map from "../../system/Event/map";
 
 export default class MapTest1 extends Map {
     constructor(player: Player) {

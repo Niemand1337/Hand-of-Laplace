@@ -2,6 +2,8 @@
 
 - Usage of enums for skillTypes and skillClass instead of numbers in the Skill ordner
 - Utilize either default export or not but not both
+- Usage of private and public for functions
+- Either folder names starting Caps or not but not both
 
 
 
@@ -12,3 +14,9 @@
 -- This is a bad system, instead there should be just a check if it evolves and then it should update the old instance with the new one
 -- The check should be done after adding something and after evolving something for the whole skill list
 -- Needs to distingish between ones that are neccesarry and once that are neccesarry and need to be removed
+
+
+
+--- Unfinished ---
+
+- src\scripts\system\Cards\deck.ts - createDefaultDeck()
